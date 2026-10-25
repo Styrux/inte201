@@ -5,7 +5,7 @@ import java.util.Scanner;
 // @author Kyle
 public class Wk4Expert {
 
-    static final int LOW_THRESHOLD = 5;
+    static final int minimum = 5;
     static Scanner input = new Scanner(System.in);
 
     // for + continue: total inventory, skipping damaged shelves
@@ -14,7 +14,7 @@ public class Wk4Expert {
         for (int r = 0; r < warehouse.length; r++) {
             for (int c = 0; c < warehouse[r].length; c++) {
                 if (warehouse[r][c] == -1) {
-                    continue; // CONTINUE: skip damaged shelf
+                    continue; // skip damaged shelf
                 }
                 total += warehouse[r][c];
             }
@@ -29,7 +29,7 @@ public class Wk4Expert {
 
         for (int r = 0; r < warehouse.length && foundRow == -1; r++) {
             for (int c = 0; c < warehouse[r].length; c++) {
-                if (warehouse[r][c] != -1 && warehouse[r][c] < LOW_THRESHOLD) {
+                if (warehouse[r][c] != -1 && warehouse[r][c] < minimum) {
                     foundRow = r;
                     foundCol = c;
                     break; // BREAK: stop the inner loop; outer loop ends via foundRow
@@ -45,7 +45,7 @@ public class Wk4Expert {
         }
     }
 
-    // Reads an int safely, re-asking until the user types a whole number
+    // reads an int safely, re-asking until the user types a whole number
     static int readInt(String prompt) {
         System.out.print(prompt);
         while (!input.hasNextInt()) {
